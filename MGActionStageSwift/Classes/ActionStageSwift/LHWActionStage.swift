@@ -103,7 +103,7 @@ public final class LHWActionStage {
             #if DEBUG
                 let executionTime = CFAbsoluteTimeGetCurrent() - startTime
                 if executionTime > 0.1 {
-                    print("===== Actor dispatch took \(executionTime) s" )
+                    Logger.debug("===== ActionStage dispatch took \(executionTime) s" )
                 }
             #endif
         } else {
@@ -113,7 +113,7 @@ public final class LHWActionStage {
                     closure()
                     let executionTime = CFAbsoluteTimeGetCurrent() - startTime
                     if executionTime > 0.1 {
-                        print("===== Actor dispatch took \(executionTime) s" )
+                        Logger.debug("===== ActionStage dispatch took \(executionTime) s" )
                     }
                 }
             #else
@@ -153,21 +153,8 @@ public final class LHWActionStage {
         return genericPath
     }
     
-    public func requestActor(
-        path: String,
-        options: [String: Any]? = nil,
-        flags: Int = 0,
-        watcher: LHWWatcher,
-        completion: ((String, Any?, Any?) -> Void)? = nil) {
-        _requestGeneric(
-            joinOnly: false,
-            inCurrentQueue: false,
-            path: path, options:
-            options,
-            flags: flags,
-            watcher: watcher,
-            completion: completion
-        )
+    public func requestActor(path: String, options: [String: Any]?, flags: Int = 0, watcher: LHWWatcher) {
+        _requestGeneric(joinOnly: false, inCurrentQueue: false, path: path, options: options, flags: flags, watcher: watcher)
     }
     
     public func changeActorPriority(path: String) {
@@ -198,7 +185,7 @@ public final class LHWActionStage {
                     reuqestQueue.insert(actor, at: 1)
                     self.requestQueues[requestQueueName] = reuqestQueue
                     
-                    print("===== changed actor \(path) priority (next in \(requestQueueName)")
+                    Logger.debug("Changed actor \(path) priority (next in \(requestQueueName)")
                 }
             }
         }
@@ -217,7 +204,7 @@ public final class LHWActionStage {
         }
         
         for path in rejoinPaths {
-            _requestGeneric(joinOnly: true, inCurrentQueue: true, path: path, options: [:], flags: 0, watcher: watcher, completion: nil)
+            _requestGeneric(joinOnly: true, inCurrentQueue: true, path: path, options: [:], flags: 0, watcher: watcher)
         }
         
         return rejoinPaths
@@ -225,7 +212,7 @@ public final class LHWActionStage {
     
     public func isExecutingActorsWithGenericPath(genericPath: String) -> Bool {
         if !isCurrentQueueStageQueue() {
-            print("===== warning: should be called from stage queue")
+            Logger.warning("===== Warning: should be called from stage queue")
             return false
         }
         
@@ -247,7 +234,7 @@ public final class LHWActionStage {
     
     public func isExecutingActorsWithPathPrefix(pathPrefix: String) -> Bool {
         if !isCurrentQueueStageQueue() {
-            print("===== warning: should be called from stage queue")
+            Logger.warning("===== Warning: should be called from stage queue")
             return false
         }
         
@@ -264,7 +251,7 @@ public final class LHWActionStage {
     
     public func executingActorsWithPathPrefix(_ pathPrefix: String) -> [LHWActor]? {
         if !isCurrentQueueStageQueue() {
-            print("===== warning: should be called from stage queue")
+            Logger.warning("===== Warning: should be called from stage queue")
             return nil
         }
         
@@ -284,7 +271,7 @@ public final class LHWActionStage {
     
     public func executingActorWithPath(_ path: String) -> LHWActor? {
         if !isCurrentQueueStageQueue() {
-            print("===== warning: should be called from stage queue")
+            Logger.warning("===== Warning: should be called from stage queue")
             return nil
         }
         
@@ -301,7 +288,7 @@ public final class LHWActionStage {
     
     public func watchForPath(_ path:String, watcher: LHWWatcher) {
         guard let actionHandler = watcher.actionHandler else {
-            print("===== warning: actionHandler is nil")
+            Logger.warning("===== Warning: actionHandler is nil")
             return
         }
         
@@ -320,7 +307,7 @@ public final class LHWActionStage {
     
     public func watchForPaths(_ paths: [String], watcher: LHWWatcher) {
         guard let actionHandler = watcher.actionHandler else {
-            print("===== warning: actionHandler is nil")
+            Logger.warning("===== Warning: actionHandler is nil")
             return
         }
         
@@ -341,7 +328,7 @@ public final class LHWActionStage {
     
     public func watchForGenericPath(_ path: String, watcher: LHWWatcher) {
         guard let actionHandler = watcher.actionHandler else {
-            print("===== warning: actionHandler is nil")
+            Logger.warning("===== Warning: actionHandler is nil")
             return
         }
         
@@ -424,7 +411,7 @@ public final class LHWActionStage {
     
     public func removeWatcher(_ watcher: LHWWatcher) {
         guard let handler = watcher.actionHandler else {
-            print("===== warning: actionHandler is nil in removeWatcher")
+            Logger.warning("===== Warning: actionHandler is nil in removeWatcher")
             return
         }
         removeWatcherByHandler(handler)
@@ -450,7 +437,7 @@ public final class LHWActionStage {
             LHW_SPINLOCKER_UNLOCK(&self.removeWatcherFromPathRequestsLock)
             
             if removeWatchersFromPath.count > 1 {
-                print("===== cancelled \(removeWatchersFromPath.count) requests at once")
+                Logger.debug("Cancelled \(removeWatchersFromPath.count) requests at once")
             }
             
             for (handler, path) in removeWatchersFromPath {
@@ -498,7 +485,7 @@ public final class LHWActionStage {
     
     public func removeWatcher(_ watcher: LHWWatcher, fromPath: String) {
         guard let handler = watcher.actionHandler else {
-            print("===== warning: actionHandler is nil")
+            Logger.warning("===== Warning: actionHandler is nil")
             return
         }
         removeWatcherByHandler(handler, fromPath: fromPath)
@@ -610,7 +597,7 @@ public final class LHWActionStage {
             actionWatchers.removeAll()
             
             guard let requestActor = requestInfo["requestActor"] as? LHWActor else {
-                print("===== warning: requestActor is nil")
+                Logger.warning("===== Warning: requestActor is nil")
                 return
             }
             
@@ -666,7 +653,7 @@ public final class LHWActionStage {
             actionWatchers.removeAll()
             
             guard let requestActor = requestInfo["requestActor"] as? LHWActor else {
-                print("===== warning: requestActor is nil")
+                Logger.warning("===== Warning: requestActor is nil")
                 return
             }
             
@@ -724,22 +711,38 @@ public final class LHWActionStage {
         }
     }
     
-    private func _requestGeneric(
-        joinOnly: Bool,
-        inCurrentQueue: Bool,
-        path: String,
-        options: [String: Any]?,
-        flags: Int,
-        watcher: LHWWatcher,
-        completion: ((String, Any?, Any?) -> Void)?) {
+    fileprivate func dumpGraphState() {
+        dispatchOnStageQueue {
+            Logger.debug("===== Graph State =====")
+            
+            Logger.debug("\(self.livePathWatchers.count) live node watchers")
+            for (path, watchers) in self.livePathWatchers {
+                Logger.debug("    \(path)")
+                for handler in watchers {
+                    if let watcher = handler.delegate {
+                        Logger.debug("        \(watcher)")
+                    }
+                }
+            }
+            
+            Logger.debug("\(self.activeRequests.count) requests")
+            for (path, _) in self.activeRequests {
+                Logger.debug("        \(path)")
+            }
+            
+            Logger.debug("========================");
+        }
+    }
+    
+    private func _requestGeneric(joinOnly: Bool, inCurrentQueue: Bool, path: String, options: [String: Any]?, flags: Int, watcher: LHWWatcher) {
         guard let actionHandler = watcher.actionHandler else {
-            print("===== warning: actionHandler is nil")
+            Logger.warning("===== Warning: actionHandler is nil")
             return
         }
         
         let requestClosure = {
             if !actionHandler.hasDelegate() {
-                print("===== error: actionHandler.delegate is nil")
+                Logger.error("===== Error: actionHandler.delegate is nil")
                 return
             }
             
@@ -750,7 +753,7 @@ public final class LHWActionStage {
             
             if requestInfo == nil {
                 guard let requestActor = LHWActor.requestActorForGenericPath(genericPath, path: path) else {
-                    print("===== error: request actor not found for \"\(path)\"")
+                    Logger.error("===== Error: request actor not found for \"\(path)\"")
                     return
                 }
                 
@@ -774,14 +777,14 @@ public final class LHWActionStage {
                         requestQueue!.append(requestActor)
                         if requestQueue!.count > 1 {
                             executeNow = false
-                            print("===== adding request \(requestActor) to request queue \"\(requestQueueName)\"")
+                            Logger.debug("Adding request \(requestActor) to request queue \"\(requestQueueName)\"")
                             
                             if flags == LHWActorRequestFlags.ChangePriority.rawValue {
                                 if requestQueue!.count > 2 {
                                     requestQueue!.removeLast()
                                     requestQueue!.insert(requestActor, at: 1)
                                     
-                                    print("===== inserted actor with high priority (next in queue)")
+                                    Logger.debug("Inserted actor with high priority (next in queue)")
                                 }
                             }
                         }
@@ -790,20 +793,20 @@ public final class LHWActionStage {
                 }
                 
                 if executeNow {
-                    requestActor.execute(options: options, completion: completion)
+                    requestActor.execute(options: options)
                 } else {
                     requestActor.storedOptions = options
                 }
             } else {
                 if var watchers = requestInfo!["watchers"] as? [LHWHandler] {
                     if !(watchers.contains(where: { $0 === actionHandler })) {
-                        print("===== joining watcher to the wathcers of \"\(path)\"")
+                        Logger.debug("Joining watcher to the wathcers of \"\(path)\"")
                         watchers.append(actionHandler)
                         
                         requestInfo!["watchers"] = watchers
                         self.activeRequests[path] = requestInfo!
                     } else {
-                        print("===== continue to watch for actor \"\(path)\"")
+                        Logger.debug("Continue to watch for actor \"\(path)\"")
                     }
                 }
                 
@@ -845,12 +848,12 @@ public final class LHWActionStage {
         }
         
         guard var requestQueue = requestQueues[requestQueueName!] else {
-            print("===== warning: requestQueue is nil")
+            Logger.warning("===== Warning: requestQueue is nil")
             return
         }
         
         if requestQueue.count == 0 {
-            print("===== warning: request queue \"\(requestActor.requestQueueName ?? "") is empty.\"")
+            Logger.warning("===== Warning: request queue \"\(requestActor.requestQueueName ?? "") is empty.\"")
         } else {
             if requestQueue[0] === requestActor {
                 requestQueue.remove(at: 0)
@@ -870,7 +873,7 @@ public final class LHWActionStage {
                 if let index = requestQueue.index(where: { $0 === requestActor }) {
                     requestQueue.remove(at: index)
                 } else {
-                    print("===== warning: request queue \"\(requestActor.requestQueueName ?? "")\" doesn't contain request to \(requestActor.path)")
+                    Logger.warning("===== Warning: request queue \"\(requestActor.requestQueueName ?? "")\" doesn't contain request to \(requestActor.path)")
                 }
             }
         }
@@ -880,7 +883,7 @@ public final class LHWActionStage {
     
     fileprivate func scheduleCancelRequest(path: String) {
         guard var requestInfo = activeRequests[path] else {
-            print("===== warning: cannot cancel request to \"\(path)\": no active request found")
+            Logger.warning("===== Warning: cannot cancel request to \"\(path)\": no active request found")
             return
         }
         
@@ -892,7 +895,7 @@ public final class LHWActionStage {
         activeRequests.removeValue(forKey: path)
         
         requestActor.cancel()
-        print("===== cancelled request to \"\(path)\"")
+        Logger.debug("===== Cancelled request to \"\(path)\"")
         
         guard let requestQueueName = requestActor.requestQueueName else {
             return
@@ -905,12 +908,12 @@ public final class LHWActionStage {
                         activeRequests.removeValue(forKey: path)
         
                         requestActor.cancel()
-                        print("Cancelled request to \"\(path)\"")
+                        Logger.debug("Cancelled request to \"\(path)\"")
                         if let requestQueueName = requestActor.requestQueueName {
                             removeRequestFromQueueAndProceedIfFirst(name: requestQueueName, fromrequestActor: requestActor)
                         }
                     } else {
-                        print("Will cancel request to \"\(path)\" in \(cancelTimeout) s")
+                        Logger.debug("Will cancel request to \"\(path)\" in \(cancelTimeout) s")
                         let cancelDict = [
                             "path": path,
                             "type": 0
@@ -932,32 +935,6 @@ public final class LHWActionStage {
  */
 }
 
-/// Debug
-extension LHWActionStage {
-    func dumpActorState() {
-        dispatchOnStageQueue {
-            print("===== Actor State =====")
-            
-            print("\(self.livePathWatchers.count) live node watchers")
-            for (path, watchers) in self.livePathWatchers {
-                print("    \(path)")
-                for handler in watchers {
-                    if let watcher = handler.delegate {
-                        print("        \(watcher)")
-                    }
-                }
-            }
-            
-            print("\(self.activeRequests.count) requests")
-            for (path, _) in self.activeRequests {
-                print("    \(path)")
-            }
-            
-            print("=======================")
-        }
-    }
-}
-
 // MARK: - Default ActionStage
 
-public let Actor = LHWActionStage.default
+public let ActionStageInstance = LHWActionStage.default

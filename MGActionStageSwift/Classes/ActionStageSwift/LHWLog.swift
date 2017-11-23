@@ -282,9 +282,9 @@ public final class LHWLog {
     
     /// removes the parameters from a function because it looks weird with a single param
     private func stripParams(function: String) -> String {
-        var f:String = function
+        var f = function
         if let indexOfBrace = f.index(of: "(") {
-             f =  String(f[indexOfBrace...]) //String(f.suffix(from: indexOfBrace))
+            f = String(f.suffix(from: indexOfBrace))
         }
         f += "()"
         return f

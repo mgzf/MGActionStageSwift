@@ -17,7 +17,6 @@
 		C30601B6E85D5A3DFFEFF8E8 /* Pods_MGActionStageSwift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E951A27F291F1A587D0A78 /* Pods_MGActionStageSwift_Tests.framework */; };
 		E41B4DC91FC6A67F00DFD79C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC21FC6A67E00DFD79C /* TestViewController.swift */; };
 		E41B4DCA1FC6A67F00DFD79C /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC31FC6A67E00DFD79C /* FirstTableViewController.swift */; };
-		E41B4DCB1FC6A67F00DFD79C /* BlockActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC51FC6A67E00DFD79C /* BlockActor.swift */; };
 		E41B4DCC1FC6A67F00DFD79C /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC61FC6A67F00DFD79C /* SecondTableViewController.swift */; };
 		E41B4DCD1FC6A67F00DFD79C /* AddCellActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC71FC6A67F00DFD79C /* AddCellActor.swift */; };
 		E41B4DCE1FC6A67F00DFD79C /* TestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC81FC6A67F00DFD79C /* TestButton.swift */; };
@@ -55,7 +54,6 @@
 		E41B4DC21FC6A67E00DFD79C /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		E41B4DC31FC6A67E00DFD79C /* FirstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
 		E41B4DC41FC6A67E00DFD79C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		E41B4DC51FC6A67E00DFD79C /* BlockActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockActor.swift; sourceTree = "<group>"; };
 		E41B4DC61FC6A67F00DFD79C /* SecondTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
 		E41B4DC71FC6A67F00DFD79C /* AddCellActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCellActor.swift; sourceTree = "<group>"; };
 		E41B4DC81FC6A67F00DFD79C /* TestButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestButton.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				E41B4DC71FC6A67F00DFD79C /* AddCellActor.swift */,
-				E41B4DC51FC6A67E00DFD79C /* BlockActor.swift */,
 				E41B4DC31FC6A67E00DFD79C /* FirstTableViewController.swift */,
 				E41B4DC41FC6A67E00DFD79C /* MyPlayground.playground */,
 				E41B4DC61FC6A67F00DFD79C /* SecondTableViewController.swift */,
@@ -395,7 +392,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E41B4DCB1FC6A67F00DFD79C /* BlockActor.swift in Sources */,
 				E41B4DCC1FC6A67F00DFD79C /* SecondTableViewController.swift in Sources */,
 				E41B4DCA1FC6A67F00DFD79C /* FirstTableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,

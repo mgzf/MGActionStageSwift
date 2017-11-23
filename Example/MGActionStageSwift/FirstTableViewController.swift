@@ -17,48 +17,29 @@ class FirstTableViewController: UITableViewController, LHWWatcher {
     override func viewDidLoad() {
         super.viewDidLoad()
         actionHandler = LHWHandler(delegate: self)
-        Actor.watchForPaths([
-            "/mg/newcell/(11)",
-            "/mg/block"
-            ], watcher: self)
+        ActionStageInstance.watchForPath("/mg/newcell/(11)", watcher: self)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCell))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTest))
     }
     
     deinit {
         actionHandler?.reset()
-        Actor.removeWatcher(self)
+        ActionStageInstance.removeWatcher(self)
     }
     
-    @objc func addCell() {
+    func addCell() {
         let options = ["text": "new cell (1)"]
-        Actor.requestActor(path: "/mg/newcell/(11)", options: options, watcher: self)
-        Actor.requestActor(path: "/mg/newcell/(12)", options: options, watcher: self)
-        Actor.requestActor(path: "/mg/newcell/(13)", options: options, watcher: self)
-        Actor.requestActor(path: "/mg/newcell/(14)", options: options, watcher: self)
+        ActionStageInstance.requestActor(path: "/mg/newcell/(11)", options: options, watcher: self)
+//        ActionStageInstance.requestActor(path: "/mg/newcell/(11)", options: options, watcher: self)
+//        ActionStageInstance.requestActor(path: "/mg/newcell/(11)", options: options, watcher: self)
+//        ActionStageInstance.requestActor(path: "/mg/newcell/(11)", options: options, watcher: self)
+//        ActionStageInstance.requestActor(path: "/mg/newcell/(11)", options: options, watcher: self)
     }
 
-    func showTest(_ sender: UIBarButtonItem) {
-//        let test = TestViewController()
-//        let nav = UINavigationController(rootViewController: test)
-//        present(nav, animated: true, completion: nil)
-        Actor.requestActor(path: "/mg/block", watcher: self) { [unowned self] (path, resource, argument) in
-            let text = resource as! String
-            self.array.append(text)
-            
-            LHWDispatchOnMainThread {
-                self.tableView.reloadData()
-            }
-        }
-        Actor.requestActor(path: "/mg/block", watcher: self) { [unowned self] (path, resource, argument) in
-            let text = resource as! String
-            self.array.append(text)
-            
-            LHWDispatchOnMainThread {
-                self.tableView.reloadData()
-            }
-        }
-        Actor.requestActor(path: "/mg/block", watcher: self)
+    @objc func showTest(_ sender: UIBarButtonItem) {
+        let test = TestViewController()
+        let nav = UINavigationController(rootViewController: test)
+        present(nav, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,7 +70,7 @@ class FirstTableViewController: UITableViewController, LHWWatcher {
  
 
     func actorCompleted(status: LHWActionStageStatus, path: String, result: Any?) {
-        print("\(path) is done")
+        Logger.debug("\(path) is done")
     }
     
     func actionStageResourceDispatched(path: String, resource: Any?, arguments: Any?) {
@@ -100,14 +81,7 @@ class FirstTableViewController: UITableViewController, LHWWatcher {
             LHWDispatchOnMainThread {
                 self.tableView.reloadData()
 //                let filePaths = Logger.getFilePaths(count: 5)
-//                print(filePaths)
-            }
-        } else if path == "/mg/block" {
-            let text = resource as! String
-            array.append(text)
-            
-            LHWDispatchOnMainThread {
-                self.tableView.reloadData()
+//                Logger.debug(filePaths)
             }
         }
     }

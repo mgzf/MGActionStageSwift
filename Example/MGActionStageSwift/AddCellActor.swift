@@ -18,8 +18,8 @@ class AddCellActor: LHWActor {
     override func prepare(options: [String : Any]?) {
         requestQueueName = "addCellQueue"
     }
-
-    override func execute(options: [String: Any]?, completion: ((String, Any?, Any?) -> Void)?) {
+    
+    override func execute(options: [String: Any]?) {
         guard let options = options else {
             return
         }
@@ -28,10 +28,10 @@ class AddCellActor: LHWActor {
             return
         }
         
-        Actor.dispatchResource(path: path, resource: text, arguments: nil)
+        ActionStageInstance.dispatchResource(path: path, resource: text, arguments: nil)
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let `self` = self else { return }
-            Actor.actionCompleted(self.path)
+            ActionStageInstance.actionCompleted(self.path)
         }
     }
 }
