@@ -15,6 +15,12 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7751A2513607A59FB56356F5 /* Pods_MGActionStageSwift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2736EB6CC291ECA862A86E72 /* Pods_MGActionStageSwift_Example.framework */; };
 		C30601B6E85D5A3DFFEFF8E8 /* Pods_MGActionStageSwift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E951A27F291F1A587D0A78 /* Pods_MGActionStageSwift_Tests.framework */; };
+		E41B4DC91FC6A67F00DFD79C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC21FC6A67E00DFD79C /* TestViewController.swift */; };
+		E41B4DCA1FC6A67F00DFD79C /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC31FC6A67E00DFD79C /* FirstTableViewController.swift */; };
+		E41B4DCB1FC6A67F00DFD79C /* BlockActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC51FC6A67E00DFD79C /* BlockActor.swift */; };
+		E41B4DCC1FC6A67F00DFD79C /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC61FC6A67F00DFD79C /* SecondTableViewController.swift */; };
+		E41B4DCD1FC6A67F00DFD79C /* AddCellActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC71FC6A67F00DFD79C /* AddCellActor.swift */; };
+		E41B4DCE1FC6A67F00DFD79C /* TestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B4DC81FC6A67F00DFD79C /* TestButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,11 +47,18 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		62BBEFD9F21F6A4B5F776905 /* Pods-MGActionStageSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGActionStageSwift_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MGActionStageSwift_Example/Pods-MGActionStageSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		7210C59936485D5DAF612405 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		9137E85361521B2FCBEE4F3F /* MGActionStageSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = MGActionStageSwift.podspec; path = ../MGActionStageSwift.podspec; sourceTree = "<group>"; };
-		B6C37F4DD472A60A3153FCE2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		7210C59936485D5DAF612405 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		9137E85361521B2FCBEE4F3F /* MGActionStageSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MGActionStageSwift.podspec; path = ../MGActionStageSwift.podspec; sourceTree = "<group>"; };
+		B6C37F4DD472A60A3153FCE2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C3C857C1047C1B0C40BB4F92 /* Pods-MGActionStageSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGActionStageSwift_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MGActionStageSwift_Tests/Pods-MGActionStageSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D179388BCB0F57F7C6F76F8B /* Pods-MGActionStageSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGActionStageSwift_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MGActionStageSwift_Tests/Pods-MGActionStageSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E41B4DC21FC6A67E00DFD79C /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		E41B4DC31FC6A67E00DFD79C /* FirstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
+		E41B4DC41FC6A67E00DFD79C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		E41B4DC51FC6A67E00DFD79C /* BlockActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockActor.swift; sourceTree = "<group>"; };
+		E41B4DC61FC6A67F00DFD79C /* SecondTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
+		E41B4DC71FC6A67F00DFD79C /* AddCellActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCellActor.swift; sourceTree = "<group>"; };
+		E41B4DC81FC6A67F00DFD79C /* TestButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestButton.swift; sourceTree = "<group>"; };
 		E56AAB9BA57DB29AEA02E028 /* Pods-MGActionStageSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGActionStageSwift_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MGActionStageSwift_Example/Pods-MGActionStageSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +117,13 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				E41B4DC71FC6A67F00DFD79C /* AddCellActor.swift */,
+				E41B4DC51FC6A67E00DFD79C /* BlockActor.swift */,
+				E41B4DC31FC6A67E00DFD79C /* FirstTableViewController.swift */,
+				E41B4DC41FC6A67E00DFD79C /* MyPlayground.playground */,
+				E41B4DC61FC6A67F00DFD79C /* SecondTableViewController.swift */,
+				E41B4DC81FC6A67F00DFD79C /* TestButton.swift */,
+				E41B4DC21FC6A67E00DFD79C /* TestViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -375,8 +395,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41B4DCB1FC6A67F00DFD79C /* BlockActor.swift in Sources */,
+				E41B4DCC1FC6A67F00DFD79C /* SecondTableViewController.swift in Sources */,
+				E41B4DCA1FC6A67F00DFD79C /* FirstTableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				E41B4DC91FC6A67F00DFD79C /* TestViewController.swift in Sources */,
+				E41B4DCD1FC6A67F00DFD79C /* AddCellActor.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				E41B4DCE1FC6A67F00DFD79C /* TestButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

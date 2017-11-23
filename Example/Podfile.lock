@@ -1,5 +1,7 @@
 PODS:
-  - MGActionStageSwift (0.1.0)
+  - MGActionStageSwift (0.0.1):
+    - MGActionStageSwift/ActionStageSwift (= 0.0.1)
+  - MGActionStageSwift/ActionStageSwift (0.0.1)
   - Nimble (7.0.2)
   - Quick (1.2.0)
 
@@ -13,7 +15,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MGActionStageSwift: 6c0d05443ece04fc1e48122df35b52556a3faf43
+  MGActionStageSwift: f6e38d223d0d82e55054d41e4d3eee545c0be59f
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 

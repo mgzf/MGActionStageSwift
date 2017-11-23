@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  MGActionStageSwift
+//  ActionStageSwift
 //
-//  Created by spf on 11/23/2017.
-//  Copyright (c) 2017 spf. All rights reserved.
+//  Created by Hanguang on 2017/3/7.
+//  Copyright © 2017年 Hanguang. All rights reserved.
 //
 
 import UIKit
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 
 }
 
