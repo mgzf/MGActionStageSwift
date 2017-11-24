@@ -125,15 +125,15 @@ public final class LHWActionStage {
     }
     
     public func genericStringForParametrizedPath(_ path: String) -> String {
-        if path.characters.count == 0 {
+        if path.count == 0 {
             return ""
         }
         
-        var newPath: String.CharacterView = String.CharacterView()
+        var newPath: String = ""
         var skipCharacters: Bool = false;
         var skippedCharacters: Bool = false;
         
-        for c in path.characters {
+        for c in path {
             if c == "(" {
                 skipCharacters = true
                 skippedCharacters = true
@@ -149,8 +149,7 @@ public final class LHWActionStage {
             return path
         }
         
-        let genericPath = String(newPath)
-        return genericPath
+        return newPath
     }
     
     public func requestActor(path: String, options: [String: Any]?, flags: Int = 0, watcher: LHWWatcher) {
@@ -198,7 +197,7 @@ public final class LHWActionStage {
         for path in activeRequests.keys {
             if (path == genericPath) ||
                 (genericStringForParametrizedPath(path) == genericPath &&
-                    (prefix.characters.count == 0 || path.hasPrefix(prefix))) {
+                    (prefix.count == 0 || path.hasPrefix(prefix))) {
                 rejoinPaths.append(path)
             }
         }
@@ -441,7 +440,7 @@ public final class LHWActionStage {
             }
             
             for (handler, path) in removeWatchersFromPath {
-                if path.characters.count == 0 {
+                if path.count == 0 {
                     continue
                 }
                 

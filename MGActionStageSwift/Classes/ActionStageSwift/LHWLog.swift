@@ -461,9 +461,9 @@ public final class LHWLog {
         }
         
         // remove the leading {"key":" from the json string and the final }
-        let offset = key.characters.count + 5
+        let offset = key.count + 5
         let endIndex = str.index(str.startIndex,
-                                 offsetBy: str.characters.count - 2)
+                                 offsetBy: str.count - 2)
         let range = str.index(str.startIndex, offsetBy: offset)..<endIndex
         return String(str[range])
     }
