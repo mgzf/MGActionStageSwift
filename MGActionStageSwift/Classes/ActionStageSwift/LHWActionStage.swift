@@ -81,6 +81,10 @@ public final class LHWActionStage {
     
     // MARK: -
     
+    public func isLivePathWithWatchers(path: String) -> Bool {
+        return livePathWatchers.keys.contains(path)
+    }
+    
     public func globalStageDispatchQueue() -> DispatchQueue {
         return globalStageQueue
     }
