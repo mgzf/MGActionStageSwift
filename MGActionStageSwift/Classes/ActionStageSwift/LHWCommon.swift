@@ -36,11 +36,15 @@ public func LHW_MUTEXLOCKER_INIT() -> pthread_mutex_t {
 }
 
 public func LHW_MUTEXLOCKER_LOCK(_ lock: inout pthread_mutex_t) {
+    #if __LP64__
     pthread_mutex_lock(&lock)
+    #endif
 }
 
 public func LHW_MUTEXLOCKER_UNLOCK(_ lock: inout pthread_mutex_t) {
+    #if __LP64__
     pthread_mutex_unlock(&lock)
+    #endif
 }
 
 public func LHW_SPINLOCKER_INIT() -> OSSpinLock {
