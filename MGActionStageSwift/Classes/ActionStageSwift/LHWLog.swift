@@ -122,7 +122,7 @@ public final class LHWLog {
     }
     
     // MARK: - Properties
-    open var debugPrint = false // set to true to debug the internal filter logic of the class
+    public var debugPrint = false // set to true to debug the internal filter logic of the class
     var reset = "\u{001b}[0m"
     var escape = "\u{001b}[38;5;"
     
@@ -142,9 +142,9 @@ public final class LHWLog {
     /// set custom file log level colors for each level
     private var fileLevelColor = FileLevelColor()
     
-    open private(set) var logToFileEnabled: Bool = true
+    public private(set) var logToFileEnabled: Bool = true
     
-    open static let `default` = LHWLog()
+    public static let `default` = LHWLog()
     
     private init() {
 //        #if DEBUG
